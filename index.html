@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Product Designer</title>
+<style>
+  :root{
+    --ink:#16181c;
+    --sub:#5b6069;
+    --line:#e7e8ea;
+    --bg:#fafafa;
+    --card:#ffffff;
+    --accent:#16181c;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",-apple-system,BlinkMacSystemFont,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+  header.top{
+    padding:120px 0 64px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--sub);
+    margin-bottom:18px;
+  }
+  h1.name{
+    font-size:40px;
+    font-weight:700;
+    margin:0 0 14px;
+    letter-spacing:-0.02em;
+  }
+  p.role{
+    font-size:18px;
+    color:var(--sub);
+    margin:0 0 28px;
+    max-width:560px;
+  }
+  .meta-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .chip{
+    font-size:13px;
+    padding:7px 14px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:var(--sub);
+  }
+
+  section.projects{
+    padding:64px 0 40px;
+  }
+  .section-label{
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--sub);
+    margin-bottom:24px;
+  }
+
+  .project-card{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    border:1px solid var(--line);
+    border-radius:20px;
+    overflow:hidden;
+    background:var(--card);
+    margin-bottom:28px;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .project-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 40px rgba(0,0,0,0.08);
+    border-color:transparent;
+  }
+  .project-thumb{
+    height:280px;
+    background:linear-gradient(135deg,#dff7f1,#eaf6ff);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+  }
+  .project-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 20%;
+  }
+  .project-thumb .badge{
+    position:absolute;
+    top:18px;
+    left:18px;
+    background:rgba(255,255,255,0.92);
+    color:#0f9c88;
+    font-size:12px;
+    font-weight:700;
+    padding:6px 12px;
+    border-radius:999px;
+    letter-spacing:.02em;
+  }
+  .project-body{
+    padding:28px 30px 30px;
+  }
+  .project-title-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:10px;
+    gap:12px;
+  }
+  .project-title{
+    font-size:24px;
+    font-weight:700;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .project-period{
+    font-size:13px;
+    color:var(--sub);
+    white-space:nowrap;
+  }
+  .project-desc{
+    font-size:15px;
+    color:var(--sub);
+    margin:0 0 16px;
+    max-width:640px;
+  }
+  .tag-row{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .tag{
+    font-size:12px;
+    padding:5px 11px;
+    background:#f2f3f4;
+    border-radius:999px;
+    color:#3c4046;
+  }
+  .view-link{
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .view-link svg{width:14px;height:14px;transition:transform .2s ease;}
+  .project-card:hover .view-link svg{transform:translateX(3px);}
+
+  .project-card.placeholder{
+    border-style:dashed;
+    background:transparent;
+  }
+  .project-card.placeholder .project-thumb{
+    height:140px;
+    background:transparent;
+    border-bottom:1px dashed var(--line);
+    align-items:center;
+    justify-content:center;
+  }
+  .project-card.placeholder .project-thumb span{
+    color:#b7bac0;
+    font-size:14px;
+  }
+  .project-card.placeholder:hover{
+    transform:none;
+    box-shadow:none;
+    border-color:var(--line);
+  }
+
+  footer{
+    padding:60px 0 100px;
+    border-top:1px solid var(--line);
+    margin-top:40px;
+    color:var(--sub);
+    font-size:14px;
+  }
+  footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
+  footer a:hover{border-color:var(--ink);}
+
+  @media (max-width:600px){
+    header.top{padding:80px 0 40px;}
+    h1.name{font-size:32px;}
+    .project-thumb{height:200px;}
+    .project-body{padding:22px 20px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">Portfolio</div>
+    <h1 class="name">Product Designer</h1>
+    <p class="role">사용자의 문제를 발견하고, 판단의 근거를 세우고, 직접 만들고 검증하며 개선하는 프로덕트 디자이너입니다.</p>
+    <div class="meta-row">
+      <span class="chip">Product Design</span>
+      <span class="chip">UX Research</span>
+      <span class="chip">UI Design</span>
+      <span class="chip">Front-end Implementation</span>
+      <span class="chip">Analytics</span>
+    </div>
+  </header>
+
+  <section class="projects">
+    <div class="section-label">Projects</div>
+
+    <a class="project-card" href="popo.html">
+      <div class="project-thumb">
+        <span class="badge">Case Study</span>
+        <img src="https://popo-app.vercel.app/Assets/image/home/home-cafe-01.png" alt="POPO 서비스 화면">
+      </div>
+      <div class="project-body">
+        <div class="project-title-row">
+          <h2 class="project-title">POPO</h2>
+          <span class="project-period">2026.04 — 2026.06</span>
+        </div>
+        <p class="project-desc">반려견과 함께 갈 수 있는 액티비티를 검색부터 예약, 결제, 일정 관리까지 하나의 흐름으로 연결한 서비스. 기획·디자인은 물론 실제 구현과 배포, 사용자 테스트와 데이터 기반 개선까지 진행했습니다.</p>
+        <div class="tag-row">
+          <span class="tag">UX Research</span>
+          <span class="tag">UI Design</span>
+          <span class="tag">Front-end Implementation</span>
+          <span class="tag">Analytics</span>
+        </div>
+        <span class="view-link">
+          케이스 스터디 보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <div class="project-card placeholder">
+      <div class="project-thumb"><span>다음 프로젝트가 곧 추가됩니다</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Contact — <a href="mailto:tnals0547@gmail.com">tnals0547@gmail.com</a></div>
+  </footer>
+</div>
+
+</body>
+</html>
